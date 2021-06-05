@@ -1,29 +1,13 @@
-# socket-chat-example
+# Real Time Vue Chat
 
-## Project setup
-```
-npm install
-```
+This is a Real Time Vue Chat build with NodeJs, Socket.io and VueJs.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Main Functionalities
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] Send global message
+- [ ] Notify when an user logout
+- [ ] Notify when an user login
+- [ ] Set nickname
+- [ ] Send private messaging
+- [ ] Show who's online
+- [ ] Add who's typing
