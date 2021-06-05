@@ -1,5 +1,5 @@
 {
-  "name": "Real Time Vue Chat",
+  "name": "real-time-vue-chat",
   "version": "0.0.1",
   "private": true,
   "description": "This is a Real Time Vue Chat build with NodeJs, Socket.io and VueJs",
