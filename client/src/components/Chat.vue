@@ -56,6 +56,7 @@ export default {
   #messages {
       margin: 0;
       padding: 0;
+      padding-bottom: 50px;
       display: flex;
       flex-direction: column;
       .message-item {
@@ -68,6 +69,8 @@ export default {
         box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
         align-self: flex-start;
         background-color: #efefef;
+        max-width: 80%;
+        word-break: break-all;
       }
  
       .message-item.me {
