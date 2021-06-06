@@ -33,7 +33,9 @@ export default {
     }
   },
   created() {
-    this.socket = io('http://127.0.0.1:5000')
+    const url = window.location.origin;
+    console.log(url+':3080')
+    this.socket = io(url+':3080')
   },
   mounted() {
     this.socket.on('chat message', (ms) => {
