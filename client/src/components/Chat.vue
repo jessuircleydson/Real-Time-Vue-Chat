@@ -23,7 +23,8 @@ export default {
       msgs: [
 
       ],
-      textMsg: ''
+      textMsg: '',
+      port: process.env.PORT,
     }
   },
   methods: {
@@ -34,8 +35,8 @@ export default {
   },
   created() {
     const url = window.location.origin;
-    console.log(url+':8080')
-    this.socket = io(url+':8080')
+    console.log(url+':'+this.port)
+    this.socket = io(url+':'+this.port)
   },
   mounted() {
     this.socket.on('chat message', (ms) => {
