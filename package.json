@@ -4,6 +4,7 @@
   "private": true,
   "description": "This is a Real Time Vue Chat build with NodeJs, Socket.io and VueJs",
   "scripts": {
+    "start": "node index.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
