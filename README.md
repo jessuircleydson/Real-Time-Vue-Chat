@@ -11,3 +11,6 @@ This is a Real Time Vue Chat build with NodeJs, Socket.io and VueJs.
 - [ ] Send private messaging
 - [ ] Show who's online
 - [ ] Add who's typing
+
+## Heroku APP
+https://real-time-vue-chat.herokuapp.com/
