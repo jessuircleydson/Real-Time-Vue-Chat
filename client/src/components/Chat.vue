@@ -1,36 +1,37 @@
 <template>
   <div class="hello">
-    <ul id="messages">
-      <li v-for="msg in msgs" :key="msg">
+    <div id="messages">
+      <div v-for="msg in msgs" :key="msg" :class="['message-item', {'me': msg.myMsg }]">
         {{ msg.text }}
-      </li>
-    </ul>
-    <div id="form">
-        <input id="input" v-model="textMsg" autocomplete="off" />
-        <button @click="sendMsg">Send</button>
+      </div>
     </div>
+
+    <ChatControls :send-m="sendMsg" @changeInputValue="textMsg = $event" />
   </div>
 </template>
 
 <script>
+  import  ChatControls  from "@/components/ChatControls";
   import  io  from "socket.io-client";
 
 export default {
   name: 'Chat',
+  components: {
+    ChatControls
+  },
   data() {
     return {
       socket: {},
-      msgs: [
-
-      ],
-      textMsg: ''
+      textMsg: '',
+      msgs: [],
+      didiISendIt: false,
     }
   },
   methods: {
     sendMsg() {
-
-      this.socket.emit('chat message', {text:this.textMsg});
-    }
+      this.msgs.push({text: this.textMsg, myMsg: true});
+      this.socket.emit('chat message', {text: this.textMsg, myMsg: false})
+    },
   },
   created() {
     const url = window.location.origin;
@@ -46,70 +47,45 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-body {
-            margin: 0;
-            padding-bottom: 3rem;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  body {
+      margin: 0;
+      padding-bottom: 3rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 
-        #form {
-            background: rgba(0, 0, 0, 0.15);
-            padding: 0.25rem;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            height: 3rem;
-            box-sizing: border-box;
-            backdrop-filter: blur(10px);
-        }
+  #messages {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      .message-item {
+        display: flex;
+        text-align: left;
+        
+        border-radius: 10px;
+        padding: 1rem 1rem;
+        margin: 0 20px 15px 20px;
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        align-self: flex-start;
+        background-color: #efefef;
+      }
+ 
+      .message-item.me {
+        background-color: rgba(38, 186, 191, 0.2);
+        align-self: flex-end;
+      }
+  }
 
-        #input {
-            border: none;
-            padding: 0 1rem;
-            flex-grow: 1;
-            border-radius: 2rem;
-            margin: 0.25rem;
-        }
-
-        #input:focus {
-            outline: none;
-        }
-
-        #form>button {
-            background: #333;
-            border: none;
-            padding: 0 1rem;
-            margin: 0.25rem;
-            border-radius: 3px;
-            outline: none;
-            color: #fff;
-        }
-
-        #messages {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        #messages>li {
-            padding: 0.5rem 1rem;
-        }
-
-        #messages>li:nth-child(odd) {
-            background: #efefef;
-        }
-        .disconnected, .connected {
-            display: block;
-            padding: 10px;
-            text-transform: uppercase;
-            color:white;
-        }
-        .connected {
-            background-color: green;
-        }
-        .disconnected {
-            background-color: red;
-        }
+  .disconnected, .connected {
+      display: block;
+      padding: 10px;
+      text-transform: uppercase;
+      color:white;
+  }
+  .connected {
+      background-color: green;
+  }
+  .disconnected {
+      background-color: red;
+  }
 </style>

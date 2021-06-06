@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
         io.emit('saiu', 'Uma pessoa saiu do chat!');
     });
     socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
+        socket.broadcast.emit('chat message', msg)
     });
 });
 

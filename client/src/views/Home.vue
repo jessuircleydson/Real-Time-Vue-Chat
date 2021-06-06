@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <h3>Real Time Vue Chat</h3>
+    <img alt="Vue logo" src="../assets/logo.png" width="40px">
     <Chat />
   </div>
 </template>
