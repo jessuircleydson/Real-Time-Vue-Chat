@@ -11,7 +11,7 @@ const io = new Server(server, {
     }
 });
 
-const PORT =  3080;
+const PORT =  8080;
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

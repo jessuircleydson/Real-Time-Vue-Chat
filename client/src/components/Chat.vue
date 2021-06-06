@@ -34,8 +34,8 @@ export default {
   },
   created() {
     const url = window.location.origin;
-    console.log(url+':3080')
-    this.socket = io(url+':3080')
+    console.log(url+':8080')
+    this.socket = io(url+':8080')
   },
   mounted() {
     this.socket.on('chat message', (ms) => {
