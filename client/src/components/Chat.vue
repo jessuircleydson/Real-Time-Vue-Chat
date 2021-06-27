@@ -2,7 +2,10 @@
   <div class="hello">
     <div id="messages">
       <div v-for="msg in msgs" :key="msg" :class="['message-item', {'me': msg.myMsg }]">
-        {{ msg.text }}
+        <span class="nickname">{{ msg.nickn }}</span><br />
+        <span class="msgText">
+            {{ msg.text }}
+        </span>
       </div>
     </div>
 
@@ -29,8 +32,16 @@ export default {
   },
   methods: {
     sendMsg() {
-      this.msgs.push({text: this.textMsg, myMsg: true});
-      this.socket.emit('chat message', {text: this.textMsg, myMsg: false})
+      this.msgs.push({
+          text: this.textMsg,
+          myMsg: true,
+          nickn: this.$store.state.nick
+        });
+      this.socket.emit('chat message', {
+          text: this.textMsg,
+          myMsg: false,
+          nickn: this.$store.state.nick
+        })
     },
   },
   created() {
@@ -60,24 +71,36 @@ export default {
       display: flex;
       flex-direction: column;
       .message-item {
-        display: flex;
         text-align: left;
-        
-        border-radius: 10px;
-        padding: 1rem 1rem;
+        display:flex;
+        flex-direction:column;
+        border-radius: 5px;
+        padding: 0.5rem 0.5rem;
+        font-size:12px;
         margin: 0 20px 15px 20px;
         box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
         align-self: flex-start;
         background-color: #efefef;
         max-width: 80%;
+        min-width: 5%;
         word-break: break-all;
+        
+        &.me {
+            background-color: rgba(38, 186, 191, 0.2);
+            align-self: flex-end;
+            .nickname {
+                display:none;
+            }
+        }
+
+        .nickname {
+            font-weight: bold;
+            font-size:12px;
+            margin-bottom:5px;
+        }
       }
  
-      .message-item.me {
-        background-color: rgba(38, 186, 191, 0.2);
-        align-self: flex-end;
-      }
-  }
+    }
 
   .disconnected, .connected {
       display: block;

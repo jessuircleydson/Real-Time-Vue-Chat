@@ -1,6 +1,6 @@
 <template>
 <div id="form">
-    <input id="input" @keyup.enter="sendM" type="text" v-model="inputVal" autocomplete="off" />
+    <input id="input" @keyup.enter="sendMsg" type="text" v-model="inputVal" autocomplete="off" />
     <button @click="sendM">Enviar</button>
 </div>
 </template>
@@ -17,6 +17,12 @@ export default {
         inputValue: String
     },
 
+    methods: {
+        sendMsg() {
+            this.sendM();
+            this.inputVal = ''
+        }
+    },
     computed: {
         inputVal: {
             get() {
