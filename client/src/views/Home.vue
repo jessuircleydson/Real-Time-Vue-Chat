@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <h3 style="text-align:center;">Real Time Vue Chat</h3>
+  <h3 style="text-align:center;">Realtime Vue Chat</h3>
     <img alt="Vue logo" src="../assets/logo.png" width="40px">
     
     <NickInput v-if="!nickFilled" />
@@ -13,7 +13,7 @@
 
 <script>
 // @ is an alias to /src
-import Chat from '@/components/Chat.vue'
+import Chat from '@/components/chat/Chat.vue'
 import NickInput from '@/components/nickname/NickInput'
 
 export default {

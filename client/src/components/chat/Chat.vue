@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import  ChatControls  from "@/components/ChatControls";
+  import  ChatControls  from "@/components/chat/ChatControls";
   import  io  from "socket.io-client";
 
 export default {
