@@ -24,7 +24,7 @@ Inside the client path run `server` to start the Vue development mode or `build`
 The Node server always point to the production path, so if you want to see in production mode you need to run the `build` command instead of `server`
 > npm run server or npm run build
 
-Start the node server
+Start the Node server
 > cd server && node index.js
 
 ### Features
