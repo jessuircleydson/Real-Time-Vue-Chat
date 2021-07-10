@@ -21,7 +21,7 @@ Install the VueJs client dependences
 > cd client && npm install
 
 Inside the [client path](./client) run `server` to start the Vue development mode or `build` to generate the production path.
-The Node server always point to the production path, so if you want to see in production mode you need to run the `build` command instead of `server`
+The Node server always point to the [production path](./client/dist), so if you want to see in production mode you need to run the `build` command instead of `server`
 > npm run server or npm run build
 
 Start the Node server
